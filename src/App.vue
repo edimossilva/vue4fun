@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <h1>{{ msg }}</h1>
+  <div id="app" class="app__container">
     <grower-list></grower-list>
   </div>
 </template>
@@ -13,13 +12,14 @@ export default {
   components: {
     'grower-list': GrowerList,
   },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
 }
 </script>
 
 <style>
+.app__container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
 </style>
