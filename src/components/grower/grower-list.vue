@@ -1,6 +1,6 @@
 <template>
   <div class="rower-list__container">
-    <h1 class="grower-list__title">Criar fazendeiro</h1>
+    <h1 class="grower-list__title">Listar fazendeiros</h1>
     <table class="grower-list__table">
       <tr>
         <th> Id </th>
