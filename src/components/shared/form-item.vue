@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <div class="item">
-      <label>{{ label }}</label>
-      <input
-        type="text"
-        v-model="field"
-        disabled
-      />
-    </div>
+  <div class="item">
+    <label>{{ label }}</label>
+    <input
+      type="text"
+      v-model="field"
+      disabled
+    />
   </div>
 </template>
 
