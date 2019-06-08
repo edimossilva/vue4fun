@@ -22,12 +22,17 @@ export default {
   name: "GrowerList",
   data() {
     return {
-      growers: [],
+      growers: this.$store.getters.growers,
     }
   },
   methods: {
     getGrowers() {
-      growerApi.getGrowers().then(growers => this.getGrowersFromJson(growers));
+      if (!this.growers) {
+        growerApi.getGrowers().then(growers => this.storeGrowers(growers));
+      }
+    },
+    storeGrowers(growers) {
+      this.$store.commit('addGrowers', growers);
     },
     getGrowersFromJson(growers) {
       this.growers = growers;

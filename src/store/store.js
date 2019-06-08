@@ -10,6 +10,9 @@ export const store = new Vuex.Store({
     mutations: {
       addGrower(state, grower) {
         state.growers.push(grower);
+      },
+      addGrowers(state, growers) {
+        state.growers = growers;
       }
     },
     getters: {
