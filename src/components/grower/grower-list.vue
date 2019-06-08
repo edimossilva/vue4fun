@@ -6,11 +6,17 @@
         <th> Id </th>
         <th> Nome </th>
         <th> CPF </th>
+        <th> Apagar </th>
       </tr>
       <tr v-for="grower in growers" v-bind:key="grower.id">
         <td> {{grower.id}} </td>
         <td> {{grower.name}} </td>
         <td> {{grower.cpf}} </td>
+        <td>
+          <button @click="deleteGrower(grower)">
+            Apagar
+          </button>
+        </td>
       </tr>
     </table>
   </div>
@@ -21,6 +27,12 @@ import growerApi from '../../services/grower-api'
 export default {
   name: "GrowerList",
   methods: {
+    deleteGrower(grower) {
+      growerApi.deleteGrower(grower).then(() => this.deleteGrowerFromStore(grower));
+    },
+    deleteGrowerFromStore(grower) {
+      this.$store.commit('deleteGrower', grower);
+    },
     getGrowers() {
       if (this.growers.length == 0) {
         growerApi.getGrowers().then(growers => this.storeGrowers(growers));

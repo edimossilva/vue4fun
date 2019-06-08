@@ -1,25 +1,24 @@
 <template>
-    <form class="grower-new__form">
-      <div class="grower-new__form-item">
-        <label>Nome:</label>
-        <input
-          type="text"
-          v-model="newGrower.name"
-          />
-      </div>
-      <div class="grower-new__form-item">
-        <label>CPF:</label>
-        <input
-          type="text"
-          v-model="newGrower.cpf"
-          />
-      </div>
-      <div class="grower-new__form-item">
-        <button @click="onSaveGrower(newGrower)"> Salvar </button>
-      </div>
-    {{newGrower}}
-    {{grower}}
-
+  <form class="grower-new__form">
+    <div class="grower-new__form-item">
+      <label>Nome:</label>
+      <input
+        type="text"
+        v-model="newGrower.name"
+        />
+    </div>
+    <div class="grower-new__form-item">
+      <label>CPF:</label>
+      <input
+        type="text"
+        v-model="newGrower.cpf"
+        />
+    </div>
+    <div class="grower-new__form-item">
+      <button @click="onSaveGrower(newGrower)"> Salvar </button>
+    </div>
+  {{newGrower}}
+  {{grower}}
     </form>
 </template>
 
