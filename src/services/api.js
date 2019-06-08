@@ -6,6 +6,10 @@ class Api {
     let url = `${HOST}/${resource}`
     return axios.get(url, params).then(result => result);
   }
+  simplePost(resource, params) {
+    let url = `${HOST}/${resource}`
+    return axios.post(url, params).then(result => result);
+  }
 }
 
 export default new Api();

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {routes} from './routes';
+import { routes } from './routes';
 import RoutesMenu from './components/routes-menu/RoutesMenu.vue';
 
 export default {

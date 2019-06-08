@@ -22,15 +22,15 @@ export default {
   name: "GrowerList",
   data() {
     return {
-      growers: []
+      growers: [],
     }
   },
   methods: {
     getGrowers() {
-      growerApi.getGrowers().then(result => this.getGrowersFromJson(result));
+      growerApi.getGrowers().then(growers => this.getGrowersFromJson(growers));
     },
-    getGrowersFromJson(json) {
-      this.growers = json.data;
+    getGrowersFromJson(growers) {
+      this.growers = growers;
     },
   },
   mounted: function() {

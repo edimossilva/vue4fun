@@ -4,27 +4,43 @@
     <form class="grower-new__form">
       <div class="grower-new__form-item">
         <label>Nome:</label>
-        <input type="text"/>
+        <input
+          type="text"
+          v-model="grower.name"
+          />
       </div>
       <div class="grower-new__form-item">
         <label>CPF:</label>
-        <input type="text"/>
+        <input
+          type="text"
+          v-model="grower.cpf"
+          />
       </div>
       <div class="grower-new__form-item">
         <button @click="createGrower"> Criar </button>
       </div>
+      {{ $store.getters.growers }}
     </form>
   </div>
 </template>
 
 <script>
 import growerApi from '../../services/grower-api'
+
 export default {
   name: "GrowerNew",
+  data() {
+    return {
+      grower: {},
+    }
+  },
   methods: {
     createGrower() {
-      alert('oi');
+      growerApi.createGrower(this.grower).then(grower => this.saveGrower(grower));
     },
+    saveGrower(grower) {
+      this.$store.commit('addGrower', grower);
+    }
   },
 }
 </script>
