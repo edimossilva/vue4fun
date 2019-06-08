@@ -17,7 +17,9 @@
       <div class="grower-new__form-item">
         <button @click="onSaveGrower(newGrower)"> Salvar </button>
       </div>
+    {{newGrower}}
     {{grower}}
+
     </form>
 </template>
 
@@ -28,11 +30,16 @@ export default {
   props: ['grower','onSaveGrower'],
   data() {
     return {
-      newGrower: {},
+      newGrower: {"name":"", "cpf": ""},
     }
   },
   mounted() {
     Object.assign(this.newGrower, this.grower)
+  },
+  watch: {
+    grower: function () {
+      Object.assign(this.newGrower, this.grower)
+    },
   }
 }
 </script>
