@@ -20,23 +20,20 @@
 import growerApi from '../../services/grower-api'
 export default {
   name: "GrowerList",
-  data() {
-    return {
-      growers: this.$store.getters.growers,
-    }
-  },
   methods: {
     getGrowers() {
-      if (!this.growers) {
+      if (this.growers.length == 0) {
         growerApi.getGrowers().then(growers => this.storeGrowers(growers));
       }
     },
     storeGrowers(growers) {
       this.$store.commit('addGrowers', growers);
     },
-    getGrowersFromJson(growers) {
-      this.growers = growers;
-    },
+  },
+  computed: {
+    growers() {
+      return this.$store.getters.growers;
+    }
   },
   mounted: function() {
     this.getGrowers();
