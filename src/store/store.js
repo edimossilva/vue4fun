@@ -13,6 +13,10 @@ export const store = new Vuex.Store({
       },
       addGrowers(state, growers) {
         state.growers = growers;
+      },
+      updateGrower(state, grower) {
+        var foundGrower = state.growers.find(g => g.id == grower.id);
+        Object.assign(foundGrower, grower)
       }
     },
     getters: {

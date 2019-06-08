@@ -1,56 +1,43 @@
 <template>
-  <div class="rower-new__container">
-    <h1 class="grower-new__title">Criar fazendeiro</h1>
     <form class="grower-new__form">
       <div class="grower-new__form-item">
         <label>Nome:</label>
         <input
           type="text"
-          v-model="grower.name"
+          v-model="newGrower.name"
           />
       </div>
       <div class="grower-new__form-item">
         <label>CPF:</label>
         <input
           type="text"
-          v-model="grower.cpf"
+          v-model="newGrower.cpf"
           />
       </div>
       <div class="grower-new__form-item">
-        <button @click="saveGrower(grower)"> Criar </button>
+        <button @click="onSaveGrower(newGrower)"> Salvar </button>
       </div>
+    {{grower}}
     </form>
-  </div>
 </template>
 
 <script>
-import growerApi from '../../services/grower-api'
 
 export default {
-  name: "GrowerNew",
+  name: "GrowerForm",
+  props: ['grower','onSaveGrower'],
   data() {
     return {
-      grower: {},
+      newGrower: {},
     }
   },
-  methods: {
-    saveGrower() {
-      growerApi.createGrower(this.grower).then(grower => this.storeGrower(grower));
-    },
-    storeGrower(grower) {
-      this.$store.commit('addGrower', grower);
-    },
-  },
+  mounted() {
+    Object.assign(this.newGrower, this.grower)
+  }
 }
 </script>
 
 <style>
-  .rower-new__container {
-    margin: 0px;
-  }
-  .grower-new__title {
-    text-align: center;
-  }
   .grower-new__form {
     display: flex;
     flex-direction: column;
