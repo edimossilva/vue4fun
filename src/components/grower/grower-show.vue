@@ -26,7 +26,6 @@
 </template>
 
 <script>
-import growerApi from '../../services/grower-api'
 import FormItem from '../shared/form-item.vue';
 import MySelect from '../shared/select.vue';
 import PropertyList from '../property/property-list.vue';

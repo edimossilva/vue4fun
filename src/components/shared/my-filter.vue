@@ -25,7 +25,7 @@ export default {
     }
   },
   watch: {
-    searchName: function (val) {
+    searchName: function () {
       if (this.searchName) {
         const foundItems = this.list.filter(this.serchByName);
         this.$emit('foundItemsChange', foundItems)

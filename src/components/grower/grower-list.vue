@@ -75,7 +75,7 @@ export default {
       }
       else {
         this.foundGrowers = this.growers;
-        return this.growers;
+        return this.foundGrowers;
       }
     }
   },
