@@ -13,7 +13,7 @@
         <ordenable :list="foundGrowers" propertyTitle="CPF" propertyName="cpf"></ordenable>
         <th> Apagar </th>
       </tr>
-      <tr v-for="grower in foundGrowers" v-bind:key="grower.id">
+      <tr v-for="grower in visibleGrowers" v-bind:key="grower.id">
         <td> {{grower.id}} </td>
         <td> {{grower.name}} </td>
         <td> {{grower.cpf}} </td>
@@ -62,8 +62,8 @@ export default {
     storeGrowers(growers) {
       this.$store.commit('addGrowers', growers);
     },
-    onFoundGrowersChange(growers) {
-      this.foundGrowers = growers;
+    onFoundGrowersChange(foundGrowers) {
+      this.foundGrowers = foundGrowers;
     },
     orderByName() {
       this.foundGrowers.sort(
@@ -75,10 +75,16 @@ export default {
     growers() {
       return this.$store.getters.growers;
     },
+    visibleGrowers() {
+      if (this.foundGrowers.length) {
+        return this.foundGrowers;
+      }
+      return this.growers;
+    }
   },
   mounted: function() {
     this.getGrowers();
-  }
+  },
 }
 </script>
 
