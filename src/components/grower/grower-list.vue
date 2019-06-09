@@ -8,9 +8,9 @@
     </growers-filter>
     <table class="grower-list__table">
       <tr>
-        <th> Id </th>
-        <th @click="orderByName"> Nome </th>
-        <th> CPF </th>
+        <ordenable :list="foundGrowers" propertyTitle="Id" propertyName="id"></ordenable>
+        <ordenable :list="foundGrowers" propertyTitle="Nome" propertyName="name"></ordenable>
+        <ordenable :list="foundGrowers" propertyTitle="CPF" propertyName="cpf"></ordenable>
         <th> Apagar </th>
       </tr>
       <tr v-for="grower in foundGrowers" v-bind:key="grower.id">
@@ -30,10 +30,13 @@
 <script>
 import growerApi from '../../services/grower-api'
 import GrowersFilter from '../shared/growers-filter'
+import Ordenable from '../shared/ordenable'
+
 export default {
   name: "GrowerList",
   components: {
     'growers-filter': GrowersFilter,
+    'ordenable': Ordenable,
   },
   data() {
     return {
