@@ -1,7 +1,5 @@
 <template>
   <div class="item">
-    id
-    {{ selectedId }}
     <select v-model="selectedId">
       <option value="" selected disabled hidden>Escolha um valor</option>
       <option

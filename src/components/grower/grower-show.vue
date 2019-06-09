@@ -18,6 +18,10 @@
       :field="selectedGrower.cpf"
     >
     </form-item>
+    <propertie-list
+      v-if="selectedGrower"
+      :grower-id="selectedId">
+    </propertie-list>
   </div>
 </template>
 
@@ -25,25 +29,22 @@
 import growerApi from '../../services/grower-api'
 import FormItem from '../shared/form-item.vue';
 import MySelect from '../shared/select.vue';
+import PropertieList from '../propertie/propertie-list.vue';
 
 export default {
   name: "GrowerShow",
   components: {
     'form-item': FormItem,
     'my-select': MySelect,
+    'propertie-list': PropertieList
   },
   data() {
     return {
       selectedId: "",
+      properties:[]
     }
   },
   methods: {
-    editGrower(grower) {
-      growerApi.editGrower(grower).then(grower => this.storeGrower(grower));
-    },
-    storeGrower(grower) {
-      this.$store.commit('updateGrower', grower);
-    },
     onSelectedItemChange (value) {
       this.selectedId = value
     }
