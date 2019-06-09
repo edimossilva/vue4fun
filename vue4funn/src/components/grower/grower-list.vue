@@ -92,49 +92,49 @@ export default {
 
 <style lang="scss" scoped>
 div {
+  align-items: center;
+  border-collapse: collapse;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 20px;
-  border-collapse: collapse;
 
   h1 {
-    font-weight: normal;
     color: #3bb4c1;
+    font-weight: normal;
   }
 
   .filter {
-    width: 100%;
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
+    width: 100%;
   }
 
   table {
-    width: 100%;
-    text-align: center;
+    border-collapse: collapse;
     margin: 10px 50px;
     padding: 20px;
-    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
     thead th {
-      min-width: 100px;
       background-color: #3bb4c1;
-      color: white;
       border: 1px solid #ddd;
-      padding: 8px;
+      color: white;
       font-size: 11px;
-      letter-spacing: 1.11px;
       font-weight: normal;
+      letter-spacing: 1.11px;
+      min-width: 100px;
+      padding: 8px;
       text-transform: uppercase;
     }
     tbody tr {
       td {
-        font-size: 13px;
-        padding: 0 10px;
-        line-height: 40px;
         background: #fff;
         color: #048998;
+        font-size: 13px;
+        line-height: 40px;
+        padding: 0 10px;
 
         &:first-child {
           width: 40px;

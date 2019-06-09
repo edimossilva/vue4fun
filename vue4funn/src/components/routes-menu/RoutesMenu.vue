@@ -25,16 +25,16 @@ nav {
 }
 nav,
 ul {
-  width: 100%;
+  align-items: center;
   height: 80px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   list-style-type: none;
+  width: 100%;
   li,
   .router-link {
-    text-decoration: none;
     color: #fff;
+    text-decoration: none;
 
     :hover {
       color: #e9e4e6;

@@ -35,15 +35,15 @@ export default {
 
 <style lang="scss" scoped>
 div {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   margin: 20px;
 
   h1 {
-    font-weight: normal;
     color: #3bb4c1;
+    font-weight: normal;
   }
 }
 </style>

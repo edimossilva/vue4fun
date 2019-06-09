@@ -59,15 +59,15 @@ export default {
 
 <style lang="scss" scoped>
 div {
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   margin-top: 20px;
+  width: 100%;
   h1 {
-    font-weight: normal;
     color: #3bb4c1;
+    font-weight: normal;
   }
 }
 </style>

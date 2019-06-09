@@ -67,15 +67,15 @@ form {
   }
 
   button {
-    width: 100%;
-    height: 50px;
     background-color: #3bb4c1;
-    color: #fff;
     border: none;
-    font-weight: bold;
+    color: #fff;
     font-size: 18px;
-    margin-top: 10px;
+    font-weight: bold;
+    height: 50px;
     margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
   }
 }
 </style>

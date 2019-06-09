@@ -43,10 +43,10 @@ div {
   text-transform: uppercase;
   label {
     input {
-      padding: 6px;
       border: none;
-      margin: 8px 16px 0 8px;
       font-size: 17px;
+      margin: 8px 16px 0 8px;
+      padding: 6px;
     }
   }
 }

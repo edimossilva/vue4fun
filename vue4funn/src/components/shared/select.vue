@@ -30,12 +30,11 @@ export default {
 
 <style lang="scss" scoped>
 div select {
-  width: 100%;
   background-color: #048998;
   border: none;
-  width: 270px;
-  height: 50px;
-  font-size: 18px;
   color: #fff;
+  font-size: 18px;
+  height: 50px;
+  width: 270px;
 }
 </style>
