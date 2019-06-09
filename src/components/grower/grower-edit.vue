@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     editGrower(grower) {
-      growerApi.editGrower(grower).then(grower => this.storeGrower(grower));
+      growerApi.editGrower(grower).then(response => this.storeGrower(response.data));
     },
     storeGrower(grower) {
       this.$store.commit('updateGrower', grower);

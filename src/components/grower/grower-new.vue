@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     saveGrower(grower) {
-      growerApi.createGrower(grower).then(grower => this.storeGrower(grower));
+      growerApi.createGrower(grower).then(response => this.storeGrower(response.data));
     },
     storeGrower(grower) {
       this.$store.commit('addGrower', grower);

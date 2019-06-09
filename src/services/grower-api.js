@@ -4,16 +4,16 @@ const GROWERS_RESOURCE = 'grower';
 
 export default {
   createGrower(grower) {
-    return api.simplePost(GROWERS_RESOURCE, grower).then(result => result.data);
+    return api.simplePost(GROWERS_RESOURCE, grower);
   },
   deleteGrower(grower) {
-    return api.simpleDelete(GROWERS_RESOURCE, grower).then(result => result);
+    return api.simpleDelete(GROWERS_RESOURCE, grower);
   },
   editGrower(grower) {
-    return api.simplePut(GROWERS_RESOURCE, grower).then(result => result.data);
+    return api.simplePut(GROWERS_RESOURCE, grower);
   },
   getGrowers() {
-    return api.simpleGet(GROWERS_RESOURCE).then(result => result.data);
+    return api.simpleGet(GROWERS_RESOURCE);
   },
 
 }

@@ -52,9 +52,9 @@ export default {
   methods: {
     getGrowers() {
       if (this.growers.length == 0) {
-        growerApi.getGrowers().then(growers => {
-          this.storeGrowers(growers);
-          this.foundGrowers = growers;
+        growerApi.getGrowers().then(response => {
+          this.storeGrowers(response.data);
+          this.foundGrowers = response.data;
         })
       }
     },

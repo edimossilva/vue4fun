@@ -1,9 +1,9 @@
 <template>
-<td>
-  <button @click="deleteGrower(grower)">
-    Apagar
-  </button>
-</td>
+  <td>
+    <button @click="deleteGrower(grower)">
+      Apagar
+    </button>
+  </td>
 </template>
 
 <script>
@@ -14,7 +14,18 @@ export default {
   props: ['grower'],
   methods: {
     deleteGrower(grower) {
-      growerApi.deleteGrower(grower).then(() => this.deleteGrowerFromStore(grower));
+      growerApi.deleteGrower(grower)
+        .then(
+          () => this.deleteGrowerFromStore(grower)
+        )
+        .catch(error => {
+          if (error.response.status == 404) {
+            console.log('não encontramos esse rapaz no servidor, vamos apaga-lo localmente');
+            this.deleteGrowerFromStore(grower);
+          } else {
+            console.log(error);
+          }
+        });
     },
     deleteGrowerFromStore(grower) {
       this.$store.commit('deleteGrower', grower);
