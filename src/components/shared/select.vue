@@ -7,7 +7,7 @@
         v-bind:key = "grower.id"
         v-bind:value = "grower.id"
       >
-        {{ grower.id }}
+        {{ grower.name }}
       </option>
     </select>
 
