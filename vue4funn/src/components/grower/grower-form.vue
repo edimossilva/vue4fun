@@ -11,8 +11,6 @@
     <div>
       <button @click="onSaveGrower(newGrower)">Salvar</button>
     </div>
-    {{newGrower}}
-    {{grower}}
   </form>
 </template>
 
