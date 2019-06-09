@@ -1,43 +1,37 @@
 <template>
-  <div class="rower-new__container">
-    <h1 class="grower-new__title">Editar fazendeiro</h1>
-    <my-select
-      :growers="growers"
-      v-on:selectedItemChange="onSelectedItemChange"
-    >
-    </my-select>
-    <grower-form
-      v-if="selectedGrower"
-      :grower="selectedGrower"
-      :onSaveGrower="editGrower"
-    >
-    </grower-form>
+  <div>
+    <h1>Editar fazendeiro</h1>
+    <my-select :growers="growers" v-on:selectedItemChange="onSelectedItemChange"></my-select>
+    <grower-form v-if="selectedGrower" :grower="selectedGrower" :onSaveGrower="editGrower"></grower-form>
   </div>
 </template>
 
 <script>
-import growerApi from '../../services/grower-api'
-import GrowerForm from './grower-form.vue';
-import MySelect from '../shared/select.vue';
+import growerApi from "../../services/grower-api";
+import GrowerForm from "./grower-form.vue";
+import MySelect from "../shared/select.vue";
 
 export default {
   name: "GrowerEdit",
   components: {
-    'grower-form': GrowerForm,
-    'my-select': MySelect,
+    "grower-form": GrowerForm,
+    "my-select": MySelect
   },
   data() {
     return {
-      selectedId: "",
-    }
+      selectedId: ""
+    };
   },
   methods: {
     editGrower(grower) {
-      growerApi.editGrower(grower)
+      growerApi
+        .editGrower(grower)
         .then(response => this.storeGrower(response.data))
         .catch(error => {
           if (error.response.status == 404) {
-            console.log('não encontramos esse rapaz no servidor, vamos edita-lo localmente');
+            console.log(
+              "não encontramos esse rapaz no servidor, vamos edita-lo localmente"
+            );
             this.storeGrower(grower);
           } else {
             console.log(error);
@@ -45,10 +39,10 @@ export default {
         });
     },
     storeGrower(grower) {
-      this.$store.commit('updateGrower', grower);
+      this.$store.commit("updateGrower", grower);
     },
-    onSelectedItemChange (value) {
-      this.selectedId = value
+    onSelectedItemChange(value) {
+      this.selectedId = value;
     }
   },
   computed: {
@@ -58,15 +52,21 @@ export default {
     selectedGrower() {
       return this.growers.find(grower => grower.id == this.selectedId);
     }
-  },
-}
+  }
+};
 </script>
 
-<style>
-  .rower-new__container {
-    margin: 0px;
+<style lang="scss" scoped>
+div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  h1 {
+    font-weight: normal;
+    color: #3bb4c1;
   }
-  .grower-new__title {
-    text-align: center;
-  }
+}
 </style>

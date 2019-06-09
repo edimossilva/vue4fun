@@ -6,32 +6,42 @@
 </template>
 
 <script>
-import { routes } from './routes';
-import RoutesMenu from './components/routes-menu/RoutesMenu.vue';
+import { routes } from "./routes";
+import RoutesMenu from "./components/routes-menu/RoutesMenu.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    'routes-menu': RoutesMenu,
+    "routes-menu": RoutesMenu
   },
   data() {
     return {
-      routes: routes,
-    }
-  },
-}
+      routes: routes
+    };
+  }
+};
 </script>
 
-<style>
-h1 {
-  margin-bottom: 24px;
-  margin-top: 24px;
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
 }
-.app__container {
-  align-items: center;
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 16px;
+}
+
+body {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  background: #f6f5f5;
+  font-family: "Montserrat", sans-serif;
 }
 </style>
