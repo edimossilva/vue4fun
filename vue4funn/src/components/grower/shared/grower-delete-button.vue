@@ -3,6 +3,7 @@
     <button @click="deleteGrower(grower)">
       Apagar
     </button>
+  </td>
 </template>
 
 <script>

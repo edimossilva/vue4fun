@@ -10,12 +10,10 @@
         {{ grower.name }}
       </option>
     </select>
-
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'FormItem',
   props: ['growers'],
