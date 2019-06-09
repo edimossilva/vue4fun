@@ -33,6 +33,7 @@ export default {
     },
     deleteGrowerFromStore(grower) {
       this.$store.commit("deleteGrower", grower);
+      alert('Fazendeiro apagado =z');
     }
   }
 };

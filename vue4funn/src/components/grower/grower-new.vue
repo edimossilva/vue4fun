@@ -26,6 +26,7 @@ export default {
         .then(response => this.storeGrower(response.data));
     },
     storeGrower(grower) {
+      alert('Fazendeiro Criado o/');
       this.$store.commit("addGrower", grower);
     }
   }

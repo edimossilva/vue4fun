@@ -40,6 +40,7 @@ export default {
     },
     storeGrower(grower) {
       this.$store.commit("updateGrower", grower);
+      alert('Fazendeiro atualizado :)');
     },
     onSelectedItemChange(value) {
       this.selectedId = value;
