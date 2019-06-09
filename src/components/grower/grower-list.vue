@@ -3,7 +3,10 @@
     <h1 class="grower-list__title">Listar fazendeiros</h1>
     <growers-filter
       :growers="growers"
+      title="property"
+
       v-on:foundGrowersChange="onFoundGrowersChange"
+
     >
     </growers-filter>
     <table class="grower-list__table">

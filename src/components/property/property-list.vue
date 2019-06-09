@@ -8,20 +8,20 @@
         <th> Área </th>
         <th> Cidade </th>
       </tr>
-      <tr v-for="propertie in properties" v-bind:key="propertie.id">
-        <td> {{propertie.id}} </td>
-        <td> {{propertie.name}} </td>
-        <td> {{propertie.total_area}} </td>
-        <td> {{propertie.city}} </td>
+      <tr v-for="property in properties" v-bind:key="property.id">
+        <td> {{property.id}} </td>
+        <td> {{property.name}} </td>
+        <td> {{property.total_area}} </td>
+        <td> {{property.city}} </td>
       </tr>
     </table>
   </div>
 </template>
 
 <script>
-import propertieApi from '../../services/propertie-api'
+import propertyApi from '../../services/property-api'
 export default {
-  name: "PropertieList",
+  name: "PropertyList",
   props: ['growerId'],
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     getProperties(growerId) {
-      propertieApi.getProperties(growerId).then(newProperties => this.properties = newProperties);
+      propertyApi.getProperties(growerId).then(newProperties => this.properties = newProperties);
     },
   },
   mounted: function() {
