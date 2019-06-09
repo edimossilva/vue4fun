@@ -50,14 +50,14 @@ describe('Ordenable.vue', () => {
       expect(wrapper.text()).toMatch(downLabel)
     });
 
-    it('sort asc the list', () => {
+    it('aplies ascending sort on the list', () => {
       wrapper.find('th').trigger('click')
 
       expect(wrapper.props('list')).toEqual(ascGrowerList)
     });
 
     describe('after second click', () => {
-      it('sort dsc the list', () => {
+      it('aplies descending sort on the list', () => {
         wrapper.find('th').trigger('click')
         wrapper.find('th').trigger('click')
 
