@@ -9,7 +9,7 @@
     <table class="grower-list__table">
       <tr>
         <th> Id </th>
-        <th> Nome </th>
+        <th @click="orderByName"> Nome </th>
         <th> CPF </th>
         <th> Apagar </th>
       </tr>
@@ -61,6 +61,11 @@ export default {
     },
     onFoundGrowersChange(growers) {
       this.foundGrowers = growers;
+    },
+    orderByName() {
+      this.foundGrowers.sort(
+        (a,b) => (a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
+      )
     }
   },
   computed: {
