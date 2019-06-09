@@ -1,14 +1,18 @@
 <template>
   <div class="rower-list__container">
     <h1 class="grower-list__title">Listar fazendeiros</h1>
-    <growers-filter
-      :growers="growers"
-      title="property"
-
-      v-on:foundGrowersChange="onFoundGrowersChange"
-
-    >
-    </growers-filter>
+    <my-filter
+      :list="growers"
+      propertyTitle="Nome"
+      propertyName="name"
+      v-on:foundItemsChange="onFoundGrowersChange"
+    />
+    <my-filter
+      :list="growers"
+      propertyTitle="CPF"
+      propertyName="cpf"
+      v-on:foundItemsChange="onFoundGrowersChange"
+    />
     <table class="grower-list__table">
       <tr>
         <ordenable :list="foundGrowers" propertyTitle="Id" propertyName="id"></ordenable>
@@ -32,13 +36,13 @@
 
 <script>
 import growerApi from '../../services/grower-api'
-import GrowersFilter from '../shared/growers-filter'
+import MyFilter from '../shared/my-filter'
 import Ordenable from '../shared/ordenable'
 
 export default {
   name: "GrowerList",
   components: {
-    'growers-filter': GrowersFilter,
+    'my-filter': MyFilter,
     'ordenable': Ordenable,
   },
   data() {

@@ -1,6 +1,6 @@
 <template>
   <div class="rower-list__container">
-    <label>Nome:</label>
+    <label>{{ propertyTitle }}:</label>
     <input
       type="search"
       v-model="searchName"
@@ -9,29 +9,28 @@
 </template>
 
 <script>
-import growerApi from '../../services/grower-api'
 export default {
-  name: "GrowersFilter",
-  props: ['growers'],
+  name: "MyFilter",
+  props: ['list','propertyTitle','propertyName'],
   data() {
     return {
       searchName:'',
     }
   },
   methods: {
-    serchByName(grower) {
-      const groweName = grower.name.toLowerCase();
+    serchByName(item) {
+      const propertyName = item[this.propertyName].toLowerCase();
       const searchName = this.searchName.toLowerCase();
-      return groweName.includes(searchName);
+      return propertyName.includes(searchName);
     }
   },
   watch: {
     searchName: function (val) {
       if (this.searchName) {
-        const foundGrowers = this.growers.filter(this.serchByName);
-        this.$emit('foundGrowersChange', foundGrowers)
+        const foundItems = this.list.filter(this.serchByName);
+        this.$emit('foundItemsChange', foundItems)
       } else {
-        this.$emit('foundGrowersChange', this.growers)
+        this.$emit('foundItemsChange', this.list)
       }
     },
   }
