@@ -1,5 +1,5 @@
 <template>
-  <th @click="onItemClick"> {{propertyTitle}} - {{orderingLabel}}</th>
+  <th @click="onItemClick"> {{label}} </th>
 </template>
 
 <script>
@@ -14,10 +14,12 @@ export default {
     }
   },
   computed: {
-    orderingLabel() {
-      return this.asc ? '▲' : '▼';
+    label() {
+      const symbol = this.asc ? '▲' : '▼';
+      return `${this.propertyTitle} - ${symbol}`;
     }
   },
+
   methods: {
     onItemClick() {
       this.orderByName();
