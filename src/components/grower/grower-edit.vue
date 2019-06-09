@@ -1,17 +1,11 @@
 <template>
   <div class="rower-new__container">
     <h1 class="grower-new__title">Editar fazendeiro</h1>
-    <select v-model="selectedId">
-      <!-- Objeto literal atribuído para demonstração -->
-      <option value="" selected disabled hidden>Escolha um valor</option>
-      <option
-        v-for = "grower in growers"
-        v-bind:key = "grower.id"
-        v-bind:value = "grower.id"
-      >
-        {{ grower.id }}
-      </option>
-    </select>
+    <my-select
+      :growers="growers"
+      v-on:selectedItemChange="onSelectedItemChange"
+    >
+    </my-select>
     <grower-form
       v-if="selectedGrower"
       :grower="selectedGrower"
@@ -24,11 +18,13 @@
 <script>
 import growerApi from '../../services/grower-api'
 import GrowerForm from './grower-form.vue';
+import MySelect from '../shared/select.vue';
 
 export default {
   name: "GrowerEdit",
   components: {
     'grower-form': GrowerForm,
+    'my-select': MySelect,
   },
   data() {
     return {
@@ -42,6 +38,9 @@ export default {
     storeGrower(grower) {
       this.$store.commit('updateGrower', grower);
     },
+    onSelectedItemChange (value) {
+      this.selectedId = value
+    }
   },
   computed: {
     growers() {

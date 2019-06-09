@@ -30,7 +30,7 @@ export default {
   name: "GrowerShow",
   components: {
     'form-item': FormItem,
-    'my-select': MySelect
+    'my-select': MySelect,
   },
   data() {
     return {
