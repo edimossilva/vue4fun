@@ -33,7 +33,16 @@ export default {
   },
   methods: {
     editGrower(grower) {
-      growerApi.editGrower(grower).then(response => this.storeGrower(response.data));
+      growerApi.editGrower(grower)
+        .then(response => this.storeGrower(response.data))
+        .catch(error => {
+          if (error.response.status == 404) {
+            console.log('não encontramos esse rapaz no servidor, vamos edita-lo localmente');
+            this.storeGrower(grower);
+          } else {
+            console.log(error);
+          }
+        });
     },
     storeGrower(grower) {
       this.$store.commit('updateGrower', grower);
