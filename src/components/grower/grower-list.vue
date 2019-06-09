@@ -76,10 +76,13 @@ export default {
       return this.$store.getters.growers;
     },
     visibleGrowers() {
-      if (this.foundGrowers.length) {
+      if (this.foundGrowers && this.foundGrowers.length) {
         return this.foundGrowers;
       }
-      return this.growers;
+      else {
+        this.foundGrowers = this.growers;
+        return this.growers;
+      }
     }
   },
   mounted: function() {
