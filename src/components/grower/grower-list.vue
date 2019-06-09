@@ -24,26 +24,24 @@
         <td> {{grower.id}} </td>
         <td> {{grower.name}} </td>
         <td> {{grower.cpf}} </td>
-        <td>
-          <button @click="deleteGrower(grower)">
-            Apagar
-          </button>
-        </td>
+        <grower-delete-button :grower="grower"/>
       </tr>
     </table>
   </div>
 </template>
 
 <script>
-import growerApi from '../../services/grower-api'
-import MyFilter from '../shared/my-filter'
-import Ordenable from '../shared/ordenable'
+import growerApi from '../../services/grower-api';
+import Ordenable from '../shared/ordenable';
+import MyFilter from '../shared/my-filter';
+import GrowerDeleteButton from './shared/grower-delete-button';
 
 export default {
   name: "GrowerList",
   components: {
     'my-filter': MyFilter,
     'ordenable': Ordenable,
+    'grower-delete-button': GrowerDeleteButton,
   },
   data() {
     return {
@@ -52,12 +50,6 @@ export default {
     }
   },
   methods: {
-    deleteGrower(grower) {
-      growerApi.deleteGrower(grower).then(() => this.deleteGrowerFromStore(grower));
-    },
-    deleteGrowerFromStore(grower) {
-      this.$store.commit('deleteGrower', grower);
-    },
     getGrowers() {
       if (this.growers.length == 0) {
         growerApi.getGrowers().then(growers => {
@@ -72,11 +64,6 @@ export default {
     onFoundGrowersChange(foundGrowers) {
       this.foundGrowers = foundGrowers;
     },
-    orderByName() {
-      this.foundGrowers.sort(
-        (a,b) => (a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
-      )
-    }
   },
   computed: {
     growers() {
