@@ -1,11 +1,11 @@
 <template>
   <div class="rower-list__container">
     <h1 class="grower-list__title">Listar fazendeiros</h1>
-    <label>Nome</label>
-    <input
-      type="search"
-      v-model="searchName"
-    />
+    <growers-filter
+      :growers="growers"
+      v-on:foundGrowersChange="onFoundGrowersChange"
+    >
+    </growers-filter>
     <table class="grower-list__table">
       <tr>
         <th> Id </th>
@@ -29,11 +29,16 @@
 
 <script>
 import growerApi from '../../services/grower-api'
+import GrowersFilter from '../shared/growers-filter'
 export default {
   name: "GrowerList",
+  components: {
+    'growers-filter': GrowersFilter,
+  },
   data() {
     return {
-      searchName:'',
+      searchName: '',
+      foundGrowers: [],
     }
   },
   methods: {
@@ -45,30 +50,23 @@ export default {
     },
     getGrowers() {
       if (this.growers.length == 0) {
-        growerApi.getGrowers().then(growers => this.storeGrowers(growers));
+        growerApi.getGrowers().then(growers => {
+          this.storeGrowers(growers);
+          this.foundGrowers = growers;
+        })
       }
     },
     storeGrowers(growers) {
       this.$store.commit('addGrowers', growers);
     },
-    serchByName(grower) {
-      const groweName = grower.name.toLowerCase();
-      const searchName = this.searchName.toLowerCase();
-      return groweName.includes(searchName);
+    onFoundGrowersChange(growers) {
+      this.foundGrowers = growers;
     }
   },
   computed: {
     growers() {
       return this.$store.getters.growers;
     },
-    foundGrowers() {
-      if (this.searchName) {
-        const foundGrowers = [...this.growers];
-        return foundGrowers.filter(this.serchByName);
-      } else {
-        return this.growers;
-      }
-    }
   },
   mounted: function() {
     this.getGrowers();
